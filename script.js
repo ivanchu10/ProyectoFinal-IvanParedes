@@ -7,23 +7,19 @@ Swal.fire({
   cancelButtonText: "No, soy menor de 18 años",
 }).then((result) => {
   if (result.isConfirmed) {
-    // Acciones a realizar si el usuario confirma que es mayor de 18 años
     Swal.fire({
       title: "¡Bienvenido!",
       text: "Puedes acceder a la página",
       icon: "success",
       confirmButtonText: "Aceptar",
     });
-    // Aquí puedes redirigir al usuario a la página principal
   } else if (result.dismiss === Swal.DismissReason.cancel) {
-    // Acciones a realizar si el usuario cancela o indica que es menor de 18 años
     Swal.fire({
       title: "Acceso denegado",
       text: "Debes ser mayor de 18 años para acceder a esta página",
       icon: "error",
       confirmButtonText: "Aceptar",
     }).then(() => {
-      // Redireccionar a Google
       window.location.href = "https://www.google.com";
     });
   }
@@ -60,7 +56,6 @@ const bebidas = [
 
   let carrito = [];
 
-  // Función para cargar el carrito desde el almacenamiento777
 function cargarCarritoDesdeStorage() {
   const carritoJSON = localStorage.getItem("carrito");
   if (carritoJSON) {
@@ -69,14 +64,11 @@ function cargarCarritoDesdeStorage() {
   }
 }
 
-// Función para guardar el carrito en el almacenamiento777
 function guardarCarritoEnStorage() {
   const carritoJSON = JSON.stringify(carrito);
   localStorage.setItem("carrito", carritoJSON);
 }
 
-
-  // Función para calcular el precio total del carrito
   function calcularPrecioTotal() {
     let total = 0;
     carrito.forEach(bebida => {
@@ -85,22 +77,19 @@ function guardarCarritoEnStorage() {
     return total;
   }
 
-  // Función para aplicar el impuesto del 21% al precio total
   function aplicarImpuesto(precioTotal) {
-    const impuesto = 0.21; // 21%
+    const impuesto = 0.21; 
     return precioTotal * (1 + impuesto);
   }
 
-  // Función para aplicar descuento si el precio total supera los $5000
   function aplicarDescuento(precioTotal) {
-    const descuento = 0.1; // 10%
+    const descuento = 0.1;
     if (precioTotal > 25000) {
       return precioTotal * (1 - descuento);
     }
     return precioTotal;
   }
 
-  // Función para actualizar el carrito y el precio total en el DOM
   function actualizarCarrito() {
     const carritoElement = document.getElementById("carrito");
     const totalElement = document.getElementById("total");
@@ -120,7 +109,6 @@ function guardarCarritoEnStorage() {
     totalElement.innerHTML = `Total: $${precioConDescuento.toFixed(2)}`;
   }
 
-  // Función para agregar una bebida al carrito
   function agregarBebida(index) {
     const bebida = bebidas[index];
     const bebidaEnCarrito = carrito.find(item => item.nombre === bebida.nombre);
@@ -138,7 +126,6 @@ function guardarCarritoEnStorage() {
   const finalizarButton = document.getElementById("finalizar");
   finalizarButton.addEventListener("click", procesarCompra);
   
-  // Función para procesar la compra y mostrar la confirmación
   function procesarCompra() {
     Swal.fire({
       title: "Confirmación de compra",
@@ -148,17 +135,14 @@ function guardarCarritoEnStorage() {
       confirmButtonText: "Sí, comprar",
       cancelButtonText: "Cancelar"
     }).then(function(result) {
-      // Verificar si se hizo clic en "Sí, comprar"
       if (result.isConfirmed) {
-        // Acciones a realizar al confirmar la compra
         Swal.fire("¡Compra realizada!", "Tu compra ha sido procesada.", "success");
-        carrito = []; // Vaciar el carrito después de realizar la compra
+        carrito = []; 
         actualizarCarrito();
       }
     });
   }
 
-  // Crear las tarjetas de las bebidas
   const cotizadorElement = document.getElementById("cotizador");
   bebidas.forEach((bebida, index) => {
     const card = document.createElement("div");
