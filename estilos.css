@@ -1,0 +1,63 @@
+
+.nav-scroller {
+    position: relative;
+    z-index: 2;
+    height: 2.75rem;
+    overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+.card {
+    background-color: white;
+    color: black;
+    border: black solid 1px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.center-image img{
+    width: 100px;
+}
+
+.custom-input {
+    background-color: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+    .search-input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .center-image img{
+        width: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .center-image img{
+        width: 50px;
+    }
+}
